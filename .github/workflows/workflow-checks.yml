@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: install actionlint
         run: |
+          # triggering a workflow
           # per https://github.com/rhysd/actionlint/blob/main/docs/install.md
           bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
 
