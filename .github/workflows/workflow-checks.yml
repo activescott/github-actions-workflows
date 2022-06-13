@@ -13,9 +13,10 @@ jobs:
   lint:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v3
+
       - name: install actionlint
         run: |
-          # triggering a workflow
           # per https://github.com/rhysd/actionlint/blob/main/docs/install.md
           bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
 
