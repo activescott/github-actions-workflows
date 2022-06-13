@@ -18,8 +18,12 @@ jobs:
       - name: install actionlint
         run: |
           # per https://github.com/rhysd/actionlint/blob/main/docs/install.md
+          cd "${GITHUB_WORKSPACE}"
+          ls -la
           bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
 
       - name: check workflows
         run: |
+          cd "${GITHUB_WORKSPACE}"
+          ls -la
           actionlint --verbose
