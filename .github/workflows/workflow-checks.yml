@@ -22,5 +22,4 @@ jobs:
 
       - name: check workflows
         run: |
-          cd .github/workflows/
           actionlint --verbose
