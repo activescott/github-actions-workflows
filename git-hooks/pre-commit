@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# if this fails install it with homebrew or https://github.com/rhysd/actionlint/blob/main/docs/install.md
+actionlint --verbose

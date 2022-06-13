@@ -1,0 +1,24 @@
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/**
+
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/**
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: install actionlint
+        run: |
+          # per https://github.com/rhysd/actionlint/blob/main/docs/install.md
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+
+      - name: check workflows
+        run: |
+          cd .github/workflows/
+          actionlint --verbose
