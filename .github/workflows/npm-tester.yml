@@ -31,7 +31,7 @@ jobs:
       - name: install dependencies
         run: |
           cd ${{ inputs.package_dir }}
-          npm i
+          npm ci
 
       - name: test
         env:

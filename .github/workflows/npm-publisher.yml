@@ -26,12 +26,17 @@ jobs:
       #- name: debug publish_package
       #  uses: actions/bin/debug@master
 
+      - name: install & build
+        run: |
+          # NOTE: assuming a monorepo with `npm workspaces` and the workspace package in the repo root 
+          #       so installing and building from the root first.
+          npm ci
+          npm run build
+
       - name: publish to npm
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd ${{ inputs.package_dir }}
-          npm install
-          npm run build
           npx semantic-release@19
