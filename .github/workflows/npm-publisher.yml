@@ -14,6 +14,7 @@ on:
 
 jobs:
   publish_package:
+    # For more on Reusable Workflows, Secrets and Environments see https://github.community/t/reusable-workflows-secrets-and-environments/203695/6
     environment: npm
     runs-on: ubuntu-20.04
     # semantic-release will decide from the repo's config whether to release or not. See .releaserc* in the package dir
@@ -38,8 +39,6 @@ jobs:
           npm run build
 
       - name: publish to npm
-        # For more on Reusable Workflows, Secrets and Environments see https://github.community/t/reusable-workflows-secrets-and-environments/203695/6
-        environment: npm
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # NOTE: We're expecting this to come from the environment declared above
