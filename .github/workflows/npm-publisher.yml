@@ -7,11 +7,14 @@ on:
         description: The relative path to the package root directory.
         required: true
         type: string
+    secrets:
+      NPM_TOKEN:
+        description: A NPM token for publishing to NPM
+        required: true
 
 jobs:
   publish_package:
     runs-on: ubuntu-20.04
-    environment: publish
     # semantic-release will decide from the repo's config whether to release or not. See .releaserc* in the package dir
     #if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/alpha'
 
