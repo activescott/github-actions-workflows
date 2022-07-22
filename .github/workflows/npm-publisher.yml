@@ -34,7 +34,7 @@ jobs:
           # NOTE: assuming a monorepo with `npm workspaces` and the workspace package in the repo root 
           #       so installing and building from the root first.
           npm ci
-          npm run build
+          npm run build --if-present
 
       - name: publish to npm
         env:
