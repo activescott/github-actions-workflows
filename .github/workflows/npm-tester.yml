@@ -11,6 +11,11 @@ on:
         description: "The node versions to test against as a JSON array provided as a string (e.g. node_versions: '[12, 14, 16]')."
         required: true
         type: string
+      do_coveralls:
+        description: "Publishes coverage information during npm test. The package's test script must publish coverage information to `{package_dir}/coverage`."
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   test:
@@ -21,6 +26,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
@@ -39,3 +45,24 @@ jobs:
         run: |
           cd ${{ inputs.package_dir }}
           npm run test
+
+      - name: coveralls publish
+        if: ${{ inputs.do_coveralls }}
+        uses: coverallsapp/github-action@master
+        continue-on-error: true
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: nodejs-${{ matrix.node }}
+          parallel: true
+
+  coveralls_finished:
+    needs: test
+    if: ${{ inputs.do_coveralls }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: coveralls finished
+        uses: coverallsapp/github-action@master
+        continue-on-error: true
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
