@@ -26,11 +26,11 @@ jobs:
     if: github.event.pull_request.auto_merge == null
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/github-script@v6
-        name: log context
-        with:
-          script: |
-            console.log(JSON.stringify(context))
+      #- uses: actions/github-script@v6
+      #  name: log context
+      #  with:
+      #    script: |
+      #      console.log(JSON.stringify(context))
 
       - uses: actions/github-script@v6
         with:
@@ -46,11 +46,11 @@ jobs:
     if: github.event.pull_request.auto_merge
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/github-script@v6
-        name: log context
-        with:
-          script: |
-            console.log(JSON.stringify(context))
+      #- uses: actions/github-script@v6
+      #  name: log context
+      #  with:
+      #    script: |
+      #      console.log(JSON.stringify(context))
 
       - uses: actions/github-script@v6
         with:
