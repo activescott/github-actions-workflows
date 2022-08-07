@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   remove_label:
-    if: ${{ github.event.auto_merge == null || github.event.auto_merge == false }}
+    if: ${{ github.event.auto_merge == null }}
     runs-on: ubuntu-20.04
     steps:
       - uses: hmarr/debug-action@v2
@@ -33,7 +33,7 @@ jobs:
           remove-labels: auto-merge-enabled
 
   add_label:
-    if: ${{ ! (github.event.auto_merge == null || github.event.auto_merge == false) }}
+    if: ${{ github.event.auto_merge != null }}
     runs-on: ubuntu-20.04
     steps:
       - uses: hmarr/debug-action@v2
