@@ -28,9 +28,15 @@ jobs:
     steps:
       - uses: hmarr/debug-action@v2
 
-      - uses: andymckay/labeler@1.0.4
+      - uses: actions/github-script@v6
         with:
-          remove-labels: auto-merge-enabled
+          script: |
+            github.rest.issues.removeLabels({
+              issue_number: context.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['auto-merge-enabled']
+            })
 
   add_label:
     if: github.event.pull_request.auto_merge
@@ -38,6 +44,12 @@ jobs:
     steps:
       - uses: hmarr/debug-action@v2
 
-      - uses: andymckay/labeler@1.0.4
+      - uses: actions/github-script@v6
         with:
-          add-labels: auto-merge-enabled
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['auto-merge-enabled']
+            })
