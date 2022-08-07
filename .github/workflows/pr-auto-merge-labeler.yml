@@ -1,0 +1,39 @@
+name: pr-auto-merge-labeler
+
+# Reusable way to label PRs with "auto-merge-enabled" tag when a PR has auto-merge enabled and 
+# removed when it is disabled.
+# The follow help article explains about the Github feature for automatically merging pull requests: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+#
+# EXAMPLE! Use a workflow like the below to run this re-usable workflow:
+#
+#on:
+#  pull_request_target:
+#    types: [auto_merge_enabled, auto_merge_disabled]
+#
+#jobs:
+#  label:
+#    uses: activescott/github-actions-workflows/.github/workflows/pr-auto-merge-labeler.yml@pr-auto-merge-labeler-v1
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  remove_label:
+    if: ${{ github.event.auto_merge == null || github.event.auto_merge == false }}
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: andymckay/labeler@v1.0.4
+        with:
+          remove-labels: auto-merge-enabled
+
+  add_label:
+    if: ${{ ! (github.event.auto_merge == null || github.event.auto_merge == false) }}
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: andymckay/labeler@v1.0.4
+        with:
+          add-labels: auto-merge-enabled
