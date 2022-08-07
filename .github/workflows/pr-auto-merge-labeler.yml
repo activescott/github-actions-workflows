@@ -35,11 +35,11 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            github.rest.issues.removeLabels({
+            github.rest.issues.removeLabel({
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ['auto-merge-enabled']
+              name: 'auto-merge-enabled'
             })
 
   add_label:
