@@ -29,6 +29,12 @@ jobs:
       - uses: hmarr/debug-action@v2
 
       - uses: actions/github-script@v6
+        name: log context
+        with:
+          script: |
+            console.log(JSON.stringify(context))
+
+      - uses: actions/github-script@v6
         with:
           script: |
             github.rest.issues.removeLabels({
@@ -43,6 +49,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: hmarr/debug-action@v2
+
+      - uses: actions/github-script@v6
+        name: log context
+        with:
+          script: |
+            console.log(JSON.stringify(context))
 
       - uses: actions/github-script@v6
         with:
