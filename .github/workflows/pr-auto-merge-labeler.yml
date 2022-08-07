@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   remove_label:
-    if: ! github.event.pull_request.auto_merge
+    if: github.event.pull_request.auto_merge == null
     runs-on: ubuntu-20.04
     steps:
       - uses: hmarr/debug-action@v2
