@@ -26,7 +26,7 @@ jobs:
     if: ${{ github.event.auto_merge == null || github.event.auto_merge == false }}
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/bin/debug@master
+      - uses: hmarr/debug-action@v2
 
       - uses: andymckay/labeler@1.0.4
         with:
@@ -36,8 +36,8 @@ jobs:
     if: ${{ ! (github.event.auto_merge == null || github.event.auto_merge == false) }}
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/bin/debug@master
-      
+      - uses: hmarr/debug-action@v2
+
       - uses: andymckay/labeler@1.0.4
         with:
           add-labels: auto-merge-enabled
