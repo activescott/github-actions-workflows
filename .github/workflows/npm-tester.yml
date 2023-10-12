@@ -46,10 +46,12 @@ jobs:
 
       - name: lint
         run: |
+          cd ${{ inputs.package_dir }}
           npm run --if-present lint
 
       - name: build
         run: |
+          cd ${{ inputs.package_dir }}
           npm run --if-present build
 
       - name: test
