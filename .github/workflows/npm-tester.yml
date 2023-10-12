@@ -44,6 +44,14 @@ jobs:
           cd ${{ inputs.package_dir }}
           npm ci
 
+      - name: lint
+        run: |
+          npm run --if-present lint
+
+      - name: build
+        run: |
+          npm run --if-present build
+
       - name: test
         env:
           CI_NODE_VERSION: ${{ matrix.node }}
