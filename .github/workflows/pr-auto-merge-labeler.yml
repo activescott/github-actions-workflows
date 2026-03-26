@@ -24,7 +24,7 @@ permissions:
 jobs:
   remove_label:
     if: github.event.pull_request.auto_merge == null
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       #- uses: actions/github-script@v6
       #  name: log context
@@ -44,7 +44,7 @@ jobs:
 
   add_label:
     if: github.event.pull_request.auto_merge
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       #- uses: actions/github-script@v6
       #  name: log context

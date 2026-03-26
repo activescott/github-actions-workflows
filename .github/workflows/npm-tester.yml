@@ -24,7 +24,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: ${{ fromJSON(inputs.node_versions) }}
@@ -73,7 +73,7 @@ jobs:
   coveralls_finished:
     needs: test
     if: ${{ inputs.do_coveralls }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: coveralls finished
         uses: coverallsapp/github-action@master
