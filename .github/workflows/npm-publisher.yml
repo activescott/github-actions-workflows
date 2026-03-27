@@ -16,13 +16,13 @@ jobs:
   publish_package:
     # For more on Reusable Workflows, Secrets and Environments see https://github.community/t/reusable-workflows-secrets-and-environments/203695/6
     environment: npm
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: v16.x
 
