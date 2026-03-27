@@ -26,13 +26,13 @@ jobs:
     if: github.event.pull_request.auto_merge == null
     runs-on: ubuntu-latest
     steps:
-      #- uses: actions/github-script@v6
+      #- uses: actions/github-script@v7
       #  name: log context
       #  with:
       #    script: |
       #      console.log(JSON.stringify(context))
 
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         with:
           script: |
             github.rest.issues.removeLabel({
@@ -46,13 +46,13 @@ jobs:
     if: github.event.pull_request.auto_merge
     runs-on: ubuntu-latest
     steps:
-      #- uses: actions/github-script@v6
+      #- uses: actions/github-script@v7
       #  name: log context
       #  with:
       #    script: |
       #      console.log(JSON.stringify(context))
 
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         with:
           script: |
             github.rest.issues.addLabels({
